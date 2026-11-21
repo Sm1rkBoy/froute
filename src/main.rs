@@ -39,15 +39,15 @@ fn run() -> Result<(), Box<dyn Error>> {
 
     sort_routes(&mut routes);
 
-    let headers = ["掩码长度", "网络号", "下一跳", "出接口", "度量"];
+    let headers = ["掩码长度", "网络号", "出接口", "下一跳", "度量"];
     let rows: Vec<[String; 5]> = routes
         .into_iter()
         .map(|route| {
             [
                 route.prefix.to_string(),
                 route.network.to_string(),
-                route.next_hop,
                 route.interface,
+                route.next_hop,
                 route.metric,
             ]
         })
